@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sepet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sepetiniz</h1>
+        <div id="cart-items"></div>
+        <div class="button-container">
+            <a href="AnaSayfa.html" class="button">Alışverişe Devam Et</a>
+            <a href="Odeme.html" class="button">Sepete Git</a>
+        </div>
+    </div>
+
+    <script>
+        function loadCartItems() {
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const cartItemsContainer = document.getElementById('cart-items');
+
+            cartItems.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('cart-item');
+                itemDiv.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                    <div class="cart-item-details">
+                        <h2>${item.name}</h2>
+                        <p>${item.description}</p>
+                        <p>Fiyat: ${item.price} TL</p>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(itemDiv);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', loadCartItems);
+    </script>
+</body>
+</html>

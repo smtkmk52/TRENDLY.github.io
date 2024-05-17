@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giriş Yap</title>
+  <link rel="stylesheet" href="style.css">
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+  />
+</head>
+<body>
+  <form class="form" id="loginForm">
+    <p id="heading">Giriş Yap</p>
+    <div class="field">
+      <span class="material-symbols-outlined"> alternate_email </span>
+      <input
+        autocomplete="off"
+        placeholder="Kullanıcı Adı"
+        class="input-field"
+        type="text"
+        id="kullaniciAdi"
+      />
+    </div>
+    <div class="field">
+      <span class="material-symbols-outlined"> lock_open </span>
+      <input
+        placeholder="Şifre"
+        class="input-field"
+        type="password"
+        id="sifre"
+      />
+    </div>
+    <div class="btn">
+      <button class="button1" type="submit">Giriş Yap</button>
+      <button class="button2" type="button" onclick="redirectToSignUp()">Kayıt Ol</button>
+    </div>
+  </form>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Formun default submit işlemini engelliyoruz
+
+      // Kullanıcı adı ve şifreyi al
+      var kullaniciAdi = document.getElementById("kullaniciAdi").value;
+      var sifre = document.getElementById("sifre").value;
+
+      // Boş alan kontrolü yap
+      if (kullaniciAdi.trim() === '' || sifre.trim() === '') {
+        alert("Kullanıcı adı ve şifre alanları boş bırakılamaz!");
+        return;
+      }
+
+      // Kayıtlı kullanıcıyı kontrol et
+      if (kullaniciKontrolEt(kullaniciAdi, sifre)) {
+        // Giriş başarılıysa Anasayfa.html sayfasına yönlendir
+        window.location.href = "Anasayfa.html";
+      } else {
+        alert("Geçersiz kullanıcı adı veya şifre!");
+      }
+    });
+
+    function redirectToSignUp() {
+      window.location.href = "kayit.html"; // Kayıt olma sayfasının adını buraya yazın
+    }
+
+    function kullaniciKontrolEt(kullaniciAdi, sifre) {
+      // Kayıtlı kullanıcıyı kontrol et
+      var kullaniciVerisi = localStorage.getItem(kullaniciAdi);
+      if (kullaniciVerisi) {
+        var kayitliSifre = JSON.parse(kullaniciVerisi).sifre;
+        return sifre === kayitliSifre;
+      } else {
+        return false;
+      }
+    }
+  </script>
+</body>
+</html>

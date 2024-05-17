@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kayıt Ol</title>
+  <link rel="stylesheet" href="style.css">
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+  />
+</head>
+<body>
+  <form class="form" id="kayitForm">
+    <p id="heading">Kayıt Ol</p>
+    <div class="field">
+      <span class="material-symbols-outlined"> alternate_email </span>
+      <input
+        autocomplete="off"
+        placeholder="Kullanıcı Adı"
+        class="input-field"
+        type="text"
+        id="kullaniciAdi"
+      />
+    </div>
+    <div class="field">
+      <span class="material-symbols-outlined"> lock_open </span>
+      <input
+        placeholder="Şifre"
+        class="input-field"
+        type="password"
+        id="sifre"
+      />
+    </div>
+    <div class="btn">
+      <button class="button1" type="submit">Kayıt Ol</button>
+      <button class="button2" type="button" onclick="redirectToLogin()">Giriş Yap</button>
+    </div>
+  </form>
+
+  <script>
+    document.getElementById("kayitForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Formun default submit işlemini engelliyoruz
+
+      // Kullanıcı adı ve şifreyi al
+      var kullaniciAdi = document.getElementById("kullaniciAdi").value;
+      var sifre = document.getElementById("sifre").value;
+b
+      // Yeni kullanıcıyı kaydet
+      kullaniciKaydet(kullaniciAdi, sifre);
+      alert("Kayıt başarılı!");
+    });
+
+    function redirectToLogin() {
+      window.location.href = "giris.html"; // Giriş yapma sayfasının adını buraya yazın
+    }
+
+    function kullaniciKaydet(kullaniciAdi, sifre) {
+      // Yeni kullanıcıyı kaydet
+      var kullaniciVerisi = { sifre: sifre };
+      localStorage.setItem(kullaniciAdi, JSON.stringify(kullaniciVerisi));
+    }
+  </script>
+</body>
+</html>

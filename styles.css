@@ -1,0 +1,294 @@
+/* Genel stiller */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: white;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Ürün listesi stilleri */
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.product {
+    width: calc(50% - 30px); /* Ürün kartlarının genişliği ve aralarındaki boşluk */
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.product img {
+  position: ;
+    max-width: 150%;
+   margin-left: -10px;
+    max-height: 190px; /* İstediğiniz sabit yükseklik */
+    object-fit: cover; /* Resmi kırpma */
+    margin-bottom: 10px;
+}
+
+.product h2 {
+    margin-bottom: 10px;
+}
+
+.product p {
+    margin-bottom: 10px;
+}
+
+.product .button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.product .button:hover {
+    background-color: #555;
+}
+
+/* Kare başlık stilleri */
+.kare-ana-baslik {
+    width: 250px;
+    background-color: black;
+    border-radius: 70px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Küçük kare sıralama stilleri */
+.kucuk-kare-siralama {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hosgeldiniz {
+    position: relative;
+    top: 30px;
+}
+
+.hosgeldiniz .button {
+    width: 100px;
+}
+
+/* Menü simgesi stilleri */
+.menu-toggle {
+    width: 30px;
+    height: 30px;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.bar {
+    width: 30px;
+    height: 3px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+/* Menü stilleri */
+.menu {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #fff;
+    padding-top: 60px;
+    transition: left 0.4s ease-in-out;
+    z-index: 9999;
+}
+
+.menu.active {
+    left: 0;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu ul li {
+    padding: 15px;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+}
+
+.menu ul li a:hover {
+    color: red;
+}
+
+/* Header stilleri */
+header {
+    background-color: transparent;
+    color: #333;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* Buton stilleri */
+.container {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    position: relative;
+}
+
+.button:hover {
+    background-color: #555;
+}
+
+/* Sepet ekle simgesi stilleri */
+.sepet-ekle {
+    position: fixed;
+    top: 18px;
+    right: 20px;
+    width: 38px;
+    height: 38px;
+}
+display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    text-decoration: none;
+}
+
+.sepet-ekle img {
+    width: 30px;
+    height: auto;
+}
+
+/* Arama simgesi stilleri */
+.search-container button {
+    background-color: white;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: relative;
+    top: -1038px;
+    left: 70px;
+}
+
+.search-container input[type="text"] {
+    position: relative;
+    top: -1045px;
+    width: 210px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    left: 65px;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    transition: top 0.3s ease;
+}
+/* Filtre menüsü */
+.filtre-menu {
+    display: none; /* Başlangıçta gizli */
+    position: fixed;
+    top: 280px; /* Filtre simgesinden sonra */
+    right: 0;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Gölgelendirme */
+    padding: 10px;
+    animation: fade-in 0.3s ease; /* Animasyon efekti */
+}
+
+.filtre-menu.active {
+    display: block; /* Toggle yapıldığında görünür */
+}
+.filtre-icon{
+  position: relative;
+  right: 170px;
+  color: gray ;
+}
+/* Seçim kutuları */
+.select-style select {
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    width: 100%;
+    background-color: #f9f9f9;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.select-style select::-ms-expand {
+    display: none;
+}
+
+.select-style {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* Etiketler */
+.filtre-content label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Animasyon */
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

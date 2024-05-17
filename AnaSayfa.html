@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Ticaret Sitesi</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-gHwlLgnwP9d4H8gdgU5HKTa/6H7eR62obCx9IjXf1d2tmswNVGYbCjS9zg8To9umtJ4MEnkqEZHiZXh+vA9eZQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <header>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <nav class="menu" id="menu">
+      <ul>
+        <li><a href="#">Anasayfa</a></li>
+        <li><a href="#">Ürünler</a></li>
+        <li><a href="#">Hakkımızda</a></li>
+        <li><a href="#">İletişim</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="hosgeldiniz" style="text-align: center;">
+    <p>En yeni ürünlerimize göz atmak için aşağıdaki butonu kullanabilirsiniz.</p>
+    <a href="#" class="button">Yeni Ürünlere Gözat</a>
+  </div>
+
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Marka, Ürün veya Kategori Ara...">
+    <button type="submit" onclick="searchFunction()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path d="M0 0h24v24H0z" fill="none"/>
+        <path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.95-5-5.78-5.34a6.505 6.505 0 0 0-7.27 7.27c.34 2.83 2.56 5.31 5.34 5.78a6.5 6.5 0 0 0 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41 1.08-.41 1.49 0L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="container">
+    <a href="SepetEkle.html" class="sepet-ekle">
+      <img src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png" alt="Alışveriş Sepeti" height="38" width="38">
+    </a>
+    <div class="filter-container">
+      <div class="filtre-toggle" onclick="toggleFiltre()">
+        <svg class="filtre-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30">
+          <path fill="none" d="M0 0h24v24H0z"/>
+          <path d="M3 5h18v2H3zm0 6h18v2H3zm0 6h18v2H3z"/>
+          <circle cx="18" cy="6" r="2.8"/>
+          <circle cx="12" cy="12" r="2.8"/>
+          <circle cx="6" cy="18" r="2.8"/>
+        </svg>
+      </div>
+      <div class="filtre-menu" id="filtre-menu">
+        <div class="filtre-content">
+          <label for="category">Kategori:</label>
+          <div class="select-style">
+            <select id="category" onchange="filterProducts()">
+              <option value="all">Tümü</option>
+              <option value="giyim">Giyim</option>
+              <option value="elektronik">Elektronik</option>
+              <option value="aksesuar">Aksesuar</option>
+            </select>
+          </div>
+        </div>
+        <div class="filtre-content">
+          <label for="priceRange">Fiyat Aralığı:</label>
+          <div class="select-style">
+            <select id="priceRange" onchange="filterProducts()">
+              <option value="all">Tümü</option>
+              <option value="0-50">0TL - 50TL</option>
+              <option value="50-100">50TL - 100TL</option>
+              <option value="100-200">100TL - 200TL</option>
+              <option value="200">200TL+</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-list" id="product-list">
+      <div class="product" data-category="giyim" data-price="30">
+        <img src="Pantalon 1.jpg" alt="Ürün 1">
+        <h2>Ürün 1</h2>
+        <p>Ürün 1 açıklaması buraya gelecek.</p>
+        <p>Fiyat: 30 TL</p>
+        <button class="button" onclick="addToCart('Pantalon 1.jpg', 'Ürün 1', 'Ürün 1 açıklaması buraya gelecek.', 30)">Sepete Ekle</button>
+      </div>
+      <div class="product" data-category="elektronik" data-price="150">
+        <img src="Pantalon 2.jpg" alt="Ürün 2">
+        <h2>Ürün 2</h2>
+        <p>Ürün 2 açıklaması buraya gelecek.</p>
+        <p>Fiyat: 150 TL</p>
+        <button class="button" onclick="addToCart('Pantalon 2.jpg', 'Ürün 2', 'Ürün 2 açıklaması buraya gelecek.', 150)">Sepete Ekle</button>
+      </div>
+      <div class="product" data-category="aksesuar" data-price="75">
+        <img src="urun3.jpg" alt="Ürün 3">
+        <h2>Ürün 3</h2>
+        <p>Ürün 3 açıklaması buraya gelecek.</p>
+        <p>Fiyat: 75 TL</p>
+        <button class="button" onclick="addToCart('urun3.jpg', 'Ürün 3', 'Ürün 3 açıklaması buraya gelecek.', 75)">Sepete Ekle</button>
+      </div>
+      <div class="product" data-category="giyim" data-price="90">
+        <img src="urun4.jpg" alt="Ürün 4">
+        <h2>Ürün 4</h2>
+        <p>Ürün 4 açıklaması buraya gelecek.</p>
+        <p>Fiyat: 90 TL</p>
+        <button class="button" onclick="addToCart('urun4.jpg', 'Ürün 4', 'Ürün 4 açıklaması buraya gelecek.', 90)">Sepete Ekle</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const menu = document.getElementById('menu');
+      menuToggle.classList.toggle('active');
+      menu.classList.toggle('active');
+    }
+
+    function toggleFiltre() {
+      const filtre = document.getElementById('filtre-menu');
+      filtre.classList.toggle('active');
+    }
+
+    function addToCart(image, name, description, price) {
+      let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+      cartItems.push({ image, name, description, price });
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      window.location.href = 'SepetEkle.html';
+    }
+
+    function searchFunction() {
+      // Arama işlevi burada olacak
+    }
+
+    function filterProducts() {
+      const category = document.getElementById('category').value;
+      const priceRange = document.getElementById('priceRange').value;
+      const products = document.querySelectorAll('.product');
+
+      products.forEach(product => {
+        const productCategory = product.getAttribute('data-category');
+        const productPrice = parseInt(product.getAttribute('data-price'));
+
+        let categoryMatch = (category === 'all' || productCategory === category);
+        let priceMatch = false;
+
+        if (priceRange === 'all') {
+          priceMatch = true;
+        } else if (priceRange === '0-50' && productPrice >= 0 && productPrice <= 50) {
+          priceMatch = true;
+        } else if (priceRange === '50-100' && productPrice > 50 && productPrice <= 100) {
+          priceMatch = true;
+        } else if (priceRange === '100-200' && productPrice > 100 && productPrice <= 200) {
+          priceMatch = true;
+        } else if (priceRange === '200' && productPrice > 200) {
+          priceMatch = true;
+        }
+
+        if (categoryMatch && priceMatch) {
+          product.style.display = 'block';
+        } else {
+          product.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
